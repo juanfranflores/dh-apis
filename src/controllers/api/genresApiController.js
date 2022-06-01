@@ -15,7 +15,13 @@ const genresController = {
   },
   detail: (req, res) => {
     db.Genre.findByPk(req.params.id).then((genre) => {
-      res.render("genresDetail.ejs", { genre });
+      res.status(200).json({
+        meta: {
+          status: 200,
+          url: req.originalUrl,
+        },
+        data: genre,
+      });
     });
   },
 };
