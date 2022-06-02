@@ -24,6 +24,17 @@ const genresController = {
       });
     });
   },
+  store: (req, res) => {
+    db.Genre.create(req.body).then((genre) => {
+      res.status(200).json({
+        meta: {
+          status: 200,
+          url: req.originalUrl,
+        },
+        data: genre,
+      });
+    });
+  },
 };
 
 module.exports = genresController;
